@@ -3,3 +3,4 @@ yfinance
 pytickersymbols
 numpy
 cvxpy
+matplotlib
