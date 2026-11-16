@@ -4,6 +4,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+TRADING_DAYS_PER_YEAR = 252
+
 
 def to_numpy_reg(df_covariance: pd.DataFrame, eps: float = 1e-8) -> np.ndarray:
     Sigma = df_covariance.to_numpy()

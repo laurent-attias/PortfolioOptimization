@@ -75,7 +75,7 @@ def solve_efficient_border(
     minimal_expected_returns = np.linspace(min_expected_return, max_expected_return, N)[
         :-1
     ]
-    optimal_affectations = np.array(
+    optimal_allocations = np.array(
         [
             solve_efficient_border_with_minimal_expected_return(
                 df_expected_returns=df_expected_returns,
@@ -87,16 +87,16 @@ def solve_efficient_border(
         ]
     )
     efficient_border_expected_returns = np.array(
-        [np.dot(optimal_affectation, M) for optimal_affectation in optimal_affectations]
+        [np.dot(optimal_allocation, M) for optimal_allocation in optimal_allocations]
     )
     efficient_border_sigma = np.array(
         [
-            np.sqrt(np.dot(optimal_affectation, Sigma @ optimal_affectation))
-            for optimal_affectation in optimal_affectations
+            np.sqrt(np.dot(optimal_allocation, Sigma @ optimal_allocation))
+            for optimal_allocation in optimal_allocations
         ]
     )
     return (
-        optimal_affectations,
+        optimal_allocations,
         efficient_border_expected_returns,
         efficient_border_sigma,
     )
