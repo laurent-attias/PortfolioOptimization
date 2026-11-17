@@ -6,7 +6,7 @@
 
 ## Structure du projet
 
-```
+```text
 PortfolioOptimization/
 ├── portfolio_optimization/        # Module principal d'optimisation
 │   ├── data_loader.py             # Téléchargement et calcul des moments empiriques
@@ -30,11 +30,13 @@ PortfolioOptimization/
 ## Cadre théorique
 
 ### Hypothèses du modèle
+
 - **Univers** : $d$ actifs risqués du S&P 500 (∼100 titres après nettoyage)
 - **Contraintes** : portefeuille long-only ($\pi_i \geq 0$), budget ($\mathbf{1}^\top \pi = 1$), pas de vente à découvert
 - **Données** : rendements journaliers via `yfinance`, nettoyage à 95 % de valeurs disponibles
 
 ### Problème d'optimisation (Markowitz)
+
 $$\min_{\pi \in [0,1]^d} \pi^\top \hat{\Sigma} \pi \quad \text{s.t.} \quad \mathbf{1}^\top \pi = 1,\; \pi^\top \hat{M} \geq m$$
 
 La frontière efficiente est tracée en faisant varier $m$ entre le rendement minimal du portefeuille GMV et le rendement maximal d'un actif individuel. Le solveur utilisé est **OSQP** (Operator Splitting Quadratic Program), robuste aux matrices semi-définies positives.
