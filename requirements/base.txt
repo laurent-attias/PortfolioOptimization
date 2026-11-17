@@ -4,3 +4,4 @@ pytickersymbols
 numpy
 cvxpy
 matplotlib
+scikit-learn

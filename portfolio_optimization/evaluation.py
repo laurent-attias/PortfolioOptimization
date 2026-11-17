@@ -24,12 +24,16 @@ class Evaluation:
         annualized_sharpe = annualized_return/annualized_volatility
         risk_bias_ratio = self.realized_volatility.mean()/self.forecasted_volatility.mean()
         mean_turnover = np.nanmean(self.turnover)
+        wealth = (1 + self.returns_out_of_sample).cumprod()
+        running_max = np.maximum.accumulate(wealth)
+        max_drawdown = ((running_max - wealth)/running_max).max()
         summary = {
             "arithmetic_annualized_return": annualized_return,
             "annualized_volatility": annualized_volatility,
             "annualized_sharpe": annualized_sharpe,
             "risk_bias_ratio": risk_bias_ratio,
             "mean_turnover": mean_turnover,
+            "max_drawdown": max_drawdown
         }
         if display:
             for metric_name, metric in summary.items():
