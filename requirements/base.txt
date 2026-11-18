@@ -1,6 +1,5 @@
 pandas
 yfinance
-pytickersymbols
 numpy
 cvxpy
 matplotlib
